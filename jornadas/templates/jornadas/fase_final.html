@@ -1,0 +1,146 @@
+{% extends "principal/base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+
+<h1 class="page-title">Selecciona Jornada</h1>
+
+<form id="jornadaForm" method="post" action="{% url 'jornadas' %}" class="jornada-form">
+
+    {% csrf_token %}
+
+    <!-- SELECT JORNADA -->
+    <label for="opciones">Jornada:</label>
+    <select id="opciones" name="opciones" onchange="this.form.submit()">
+        <option value="1" {% if jornada_actual == 1 %} selected {% endif %}>1</option>
+        <option value="2" {% if jornada_actual == 2 %} selected {% endif %}>2</option>
+        <option value="3" {% if jornada_actual == 3 %} selected {% endif %}>3</option>
+        <option value="4" {% if jornada_actual == 4 %} selected {% endif %}>4</option>
+    </select>
+
+
+    <!-- SELECT JUGADOR -->
+    <label for="jugador">Jugador:</label>
+    <select id="jugador" name="jugador" onchange="this.form.submit()">
+
+        <option value="">Selecciona jugador</option>
+
+        {% for j in jugadores_fase_final %}
+        <option value="{{ j }}"
+        {% if j == jugador_seleccionado %}selected{% endif %}>
+        {{ j }}
+        </option>
+        {% endfor %}
+
+    </select>
+
+</form>
+
+<hr>
+<h1 class="page-title">Puntos: {{ puntos }}</h1>
+
+<div class="predicciones-bracket">
+
+{% if prediccion_actual %}
+
+<div class="lado">
+
+<div class="col">
+<div class="col-title">+1</div>
+<div class="box {{ colores.0 }}">{{ prediccion_actual.0 }}</div>
+<div class="box {{ colores.1 }}">{{ prediccion_actual.1 }}</div>
+<div class="box {{ colores.2 }}">{{ prediccion_actual.2 }}</div>
+<div class="box {{ colores.3 }}">{{ prediccion_actual.3 }}</div>
+<div class="box {{ colores.4 }}">{{ prediccion_actual.4 }}</div>
+<div class="box {{ colores.5 }}">{{ prediccion_actual.5 }}</div>
+<div class="box {{ colores.6 }}">{{ prediccion_actual.6 }}</div>
+<div class="box {{ colores.7 }}">{{ prediccion_actual.7 }}</div>
+</div>
+
+<div class="col mid">
+<div class="col-title">+2</div>
+<div class="box {{ colores.8 }}">{{ prediccion_actual.8 }}</div>
+<div class="box {{ colores.9 }}">{{ prediccion_actual.9 }}</div>
+<div class="box {{ colores.10 }}">{{ prediccion_actual.10 }}</div>
+<div class="box {{ colores.11 }}">{{ prediccion_actual.11 }}</div>
+</div>
+
+<div class="col mid2">
+<div class="col-title">+3</div>
+<div class="box {{ colores.12 }}">{{ prediccion_actual.12 }}</div>
+<div class="box {{ colores.13 }}">{{ prediccion_actual.13 }}</div>
+</div>
+
+<div class="col mid3">
+<div class="col-title">+5</div>
+<div class="box {{ colores.14 }}">{{ prediccion_actual.14 }}</div>
+</div>
+
+</div>
+
+
+<div class="centro">
+<div class="col-title final-title">+10</div>
+<div class="box final {{ colores.15 }}">{{ prediccion_actual.15 }}</div>
+</div>
+
+
+<div class="lado">
+
+<div class="col mid3">
+<div class="col-title">+5</div>
+<div class="box {{ colores.16 }}">{{ prediccion_actual.16 }}</div>
+</div>
+
+<div class="col mid2">
+<div class="col-title">+3</div>
+<div class="box {{ colores.17 }}">{{ prediccion_actual.17 }}</div>
+<div class="box {{ colores.18 }}">{{ prediccion_actual.18 }}</div>
+</div>
+
+<div class="col mid">
+<div class="col-title">+2</div>
+<div class="box {{ colores.19 }}">{{ prediccion_actual.19 }}</div>
+<div class="box {{ colores.20 }}">{{ prediccion_actual.20 }}</div>
+<div class="box {{ colores.21 }}">{{ prediccion_actual.21 }}</div>
+<div class="box {{ colores.22 }}">{{ prediccion_actual.22 }}</div>
+</div>
+
+<div class="col">
+<div class="col-title">+1</div>
+<div class="box {{ colores.23 }}">{{ prediccion_actual.23 }}</div>
+<div class="box {{ colores.24 }}">{{ prediccion_actual.24 }}</div>
+<div class="box {{ colores.25 }}">{{ prediccion_actual.25 }}</div>
+<div class="box {{ colores.26 }}">{{ prediccion_actual.26 }}</div>
+<div class="box {{ colores.27 }}">{{ prediccion_actual.27 }}</div>
+<div class="box {{ colores.28 }}">{{ prediccion_actual.28 }}</div>
+<div class="box {{ colores.29 }}">{{ prediccion_actual.29 }}</div>
+<div class="box {{ colores.30 }}">{{ prediccion_actual.30 }}</div>
+</div>
+
+</div>
+
+{% endif %}
+
+
+
+<script>
+
+document.getElementById('opciones').addEventListener('change', function() {
+    document.getElementById('jornadaForm').submit();
+});
+
+/* cuando cambie jugador */
+document.getElementById('jugador').addEventListener('change', function() {
+
+    let jugador = this.value;
+
+    if(jugador !== ""){
+        document.getElementById('jugadorForm').submit();
+    }
+
+});
+
+</script>
+
+{% endblock %}

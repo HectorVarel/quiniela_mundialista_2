@@ -1,0 +1,82 @@
+{% extends "principal/base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <!-- Bienvenida -->
+    <h1 class="page-title">Bienvenido a la Quiniela Pitera Mundialista 2.0</h1>
+
+    <!-- Descripción -->
+    <p class="page-subtitle">
+        ¡La incompetencia de esta quiniela puede llegar a rozar el límite de la mediocridad!
+    </p>
+
+    <hr class="divider">
+
+    <!-- ================= TITULOS ================= -->
+    <h2 class="section-title">Histórico de títulos</h2>
+
+    <div class="table-container small">
+        <table class="styled-table compact">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Títulos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in titulos %}
+                <tr>
+                    <td>{{ t.nombre }}</td>
+                    <td>{{ t.titulos }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="divider large">
+
+    <!-- ================= HISTORICO DINÁMICO ================= -->
+    <h2 class="section-title">Histórico de quinielas ({{ campo_q }})</h2>
+
+    {% if historico %}
+    <div class="table-wrapper">
+
+        <a class="arrow left" href="?q={{ q_actual|add:'-1' }}">⬅</a>
+
+        <div class="table-container small">
+            <table class="styled-table compact">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Lugar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for h in historico %}
+                    <tr>
+                        <td>{{ h.nombre }}</td>
+                        <td>{{ h|get_attr:campo_q }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a class="arrow right" href="?q={{ q_actual|add:'1' }}">➡</a>
+
+    </div>
+    {% else %}
+        <p class="empty-message">
+            No hay registros para {{ campo_q }}
+        </p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,46 @@
+{% extends "principal/base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+
+
+
+<h1 class="page-title">Tabla General</h1>
+    <div class="tabla-wrapper">
+        <div class="table-responsive">
+            <!-- Tabla para mostrar las jornadas -->
+            <table class="table-jornadas">
+            <tr>
+                <th>Nombre</th>
+
+                {% for i in j_range %}
+                    {% if i != 4 %}
+                        <th>J{{ i }}</th>
+                    {% else %}
+                        <th>Eliminatorias</th>
+                    {% endif %}
+                {% endfor %}
+
+                <th>Suma</th>
+            </tr>
+
+            {% for jornada in jornadas %}
+            <tr>
+                <td class="col-nombre">{{ jornada.nombre }}</td>
+
+                <td class="{{ jornada.j1|valor_clase }}">{{ jornada.j1 }}</td>
+                <td class="{{ jornada.j2|valor_clase }}">{{ jornada.j2 }}</td>
+                <td class="{{ jornada.j3|valor_clase }}">{{ jornada.j3 }}</td>
+                <td class="{{ jornada.j4|valor_clase }}">{{ jornada.j4 }}</td>
+                
+
+                <td class="col-suma">{{ jornada.suma_j }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

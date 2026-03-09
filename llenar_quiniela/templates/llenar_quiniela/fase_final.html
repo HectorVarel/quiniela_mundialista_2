@@ -1,0 +1,228 @@
+{% extends "principal/base.html" %}
+
+{% block content %}
+<div class="bracket-full">
+
+<h1 class="page-title">Selecciona tu nombre</h1>
+
+<form id="miFormulario" action="{% url 'ingresar_resultado' %}" method="post" class="nombre-form">
+    {% csrf_token %}
+
+    <!-- JUGADOR -->
+    <select name="jugador" id="cartas" required>
+        <option value="">-- Selecciona --</option>
+        {% for j in jugadores %}
+            <option value="{{ j.nombre }}">{{ j.nombre }}</option>
+        {% endfor %}
+    </select>
+
+    <hr>
+
+    <div class="bracket">
+
+        <!-- LADO IZQUIERDO -->
+        <div class="side">
+
+            <div class="round">
+                <h4>16vos</h4>
+                {% for partido in partidos_izq_16 %}
+                    <div class="match">
+                        <select class="izq-16" name="izq16_{{ forloop.counter0 }}">
+                            <option value="{{ partido.equipo1 }}">{{ partido.equipo1 }}</option>
+                            <option value="{{ partido.equipo2 }}">{{ partido.equipo2 }}</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="round">
+                <h4>8vos</h4>
+                <div id="izq-8"></div>
+            </div>
+
+            <div class="round">
+                <h4>Cuartos</h4>
+                <div id="izq-4"></div>
+            </div>
+
+            <div class="round">
+                <h4>Semifinal</h4>
+                <div id="izq-2"></div>
+            </div>
+
+        </div>
+
+        <!-- FINAL -->
+        <div class="center-final">
+            <h3>FINAL</h3>
+
+            <div class="match">
+                <select id="finalLeft" name="final_izq"></select>
+            </div>
+
+            <div class="match">
+                <select id="finalRight" name="final_der"></select>
+            </div>
+
+            <h3>🏆 Campeón</h3>
+
+            <div class="match champion-box">
+                <select id="championSelect" name="campeon">
+                    <option value="">Seleccionar campeón</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- LADO DERECHO -->
+        <div class="side">
+
+            <div class="round">
+                <h4>Semifinal</h4>
+                <div id="der-2"></div>
+            </div>
+
+            <div class="round">
+                <h4>Cuartos</h4>
+                <div id="der-4"></div>
+            </div>
+
+            <div class="round">
+                <h4>8vos</h4>
+                <div id="der-8"></div>
+            </div>
+
+            <div class="round">
+                <h4>16vos</h4>
+                {% for partido in partidos_der_16 %}
+                    <div class="match">
+                        <select class="der-16" name="der16_{{ forloop.counter0 }}">
+                            <option value="{{ partido.equipo1 }}">{{ partido.equipo1 }}</option>
+                            <option value="{{ partido.equipo2 }}">{{ partido.equipo2 }}</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="submit-container">
+        <button type="submit">Enviar predicciones</button>
+    </div>
+
+</form>
+</div>
+
+<script>
+
+function updateChampionOptions() {
+
+    const finalLeft = document.getElementById("finalLeft").value;
+    const finalRight = document.getElementById("finalRight").value;
+    const championSelect = document.getElementById("championSelect");
+
+    // guardar selección actual
+    const valorActual = championSelect.value;
+
+    championSelect.innerHTML = '<option value="">Seleccionar campeón</option>';
+
+    if (finalLeft) {
+        championSelect.innerHTML += `<option value="${finalLeft}">${finalLeft}</option>`;
+    }
+
+    if (finalRight) {
+        championSelect.innerHTML += `<option value="${finalRight}">${finalRight}</option>`;
+    }
+
+    // restaurar selección si aún existe
+    if (valorActual === finalLeft || valorActual === finalRight) {
+        championSelect.value = valorActual;
+    }
+}
+
+function generar(origenClass, destinoId, nuevaClase) {
+
+    let selects = document.querySelectorAll("." + origenClass);
+    let destino = document.getElementById(destinoId);
+
+    // guardar selecciones actuales
+    let valoresPrevios = [];
+    destino.querySelectorAll("select").forEach(s => {
+        valoresPrevios.push(s.value);
+    });
+
+    destino.innerHTML = "";
+
+    let index = 0;
+
+    for (let i = 0; i < selects.length; i += 2) {
+
+        let a = selects[i]?.value;
+        let b = selects[i+1]?.value;
+
+        if (a && b) {
+
+            let div = document.createElement("div");
+            div.classList.add("match");
+
+            let select = document.createElement("select");
+            select.classList.add(nuevaClase);
+
+            select.name = nuevaClase + "_" + index;
+
+            select.innerHTML = `
+                <option value="${a}">${a}</option>
+                <option value="${b}">${b}</option>
+            `;
+
+            // restaurar valor si existe
+            if (valoresPrevios[index] === a || valoresPrevios[index] === b) {
+                select.value = valoresPrevios[index];
+            }
+
+            div.appendChild(select);
+            destino.appendChild(div);
+
+            index++;
+        }
+    }
+}
+
+function generarFinal() {
+    const izqFinal = document.querySelectorAll(".izq-2-s");
+    const derFinal = document.querySelectorAll(".der-2-s");
+
+    const finalLeft = document.getElementById("finalLeft");
+    const finalRight = document.getElementById("finalRight");
+
+    finalLeft.innerHTML = "";
+    finalRight.innerHTML = "";
+
+    if (izqFinal.length > 0) {
+        finalLeft.innerHTML = `<option value="${izqFinal[0].value}">${izqFinal[0].value}</option>`;
+    }
+
+    if (derFinal.length > 0) {
+        finalRight.innerHTML = `<option value="${derFinal[0].value}">${derFinal[0].value}</option>`;
+    }
+
+    updateChampionOptions();
+}
+
+document.addEventListener("change", function() {
+
+    generar("izq-16", "izq-8", "izq-8-s");
+    generar("izq-8-s", "izq-4", "izq-4-s");
+    generar("izq-4-s", "izq-2", "izq-2-s");
+
+    generar("der-16", "der-8", "der-8-s");
+    generar("der-8-s", "der-4", "der-4-s");
+    generar("der-4-s", "der-2", "der-2-s");
+
+    generarFinal();
+});
+
+</script>
+
+{% endblock %}

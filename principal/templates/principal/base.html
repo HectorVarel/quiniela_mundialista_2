@@ -1,0 +1,1186 @@
+<style>
+
+/* AQUI EMPIEZA LO DE LA PESTAÑA DE INICIO */
+
+#Header {
+    background: linear-gradient(135deg, #0b3d2e, #145a32);
+    color: #f1f1f1;
+    padding: 24px 40px;
+    text-align: center;
+
+    /* Estilo moderno */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    border-bottom: 4px solid #1abc9c;
+
+    /* Tipografía */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: 1.2px;
+
+    /* Transiciones suaves */
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+#Header h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.menu {
+    background: linear-gradient(135deg, #0b3d2e, #145a32);
+    padding: 12px 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.menu a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 14px;
+
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+.menu a:hover {
+    background-color: rgba(26, 188, 156, 0.25);
+    color: #ffffff;
+}
+
+.menu a.active {
+    background-color: #1abc9c;
+    color: #0b3d2e;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    background: linear-gradient(135deg, #0b3d2e, #145a32);
+    color: #ecf0f1;
+    text-align: center;
+    padding: 16px 10px;
+
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+
+    border-top: 3px solid #1abc9c;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.35);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* ================= RESET BÁSICO ================= */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f6fa;
+}
+
+/* ================= CONTENEDOR GENERAL ================= */
+.page-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ================= TÍTULOS ================= */
+.page-title {
+    text-align: center;
+    color: #0b3d2e;
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    text-align: center;
+    color: #145a32;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* ================= DIVISORES ================= */
+.divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #1abc9c, transparent);
+    margin: 30px 0;
+}
+
+.divider.large {
+    margin: 50px 0;
+}
+
+/* ================= TABLAS ================= */
+.table-container {
+    overflow-x: auto;
+}
+
+.table-container.small {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+    /* Animación de entrada */
+    animation: fadeSlideIn 0.45s ease-out;
+}
+
+.styled-table thead {
+    background: linear-gradient(135deg, #0b3d2e, #145a32);
+    color: #ecf0f1;
+}
+
+.styled-table th,
+.styled-table td {
+    text-align: center;
+}
+
+.styled-table.compact th,
+.styled-table.compact td {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.styled-table tbody tr:hover {
+    background-color: rgba(26, 188, 156, 0.18);
+    transform: scale(1.01);
+}
+
+.styled-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* ================= FLECHAS ================= */
+.table-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.arrow {
+    font-size: 3.2rem;
+    text-decoration: none;
+    color: #1abc9c;
+    padding: 4px;
+    border-radius: 50%;
+    line-height: 1;
+    transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.arrow:hover {
+    background-color: rgba(26, 188, 156, 0.25);
+    color: #0b3d2e;
+    transform: scale(1.35);
+}
+
+/* ================= MENSAJE VACÍO ================= */
+.empty-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #999;
+    margin-top: 30px;
+}
+
+/* ================= ANIMACIÓN ================= */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .table-wrapper {
+        flex-direction: column;
+    }
+
+    .arrow {
+        font-size: 2.6rem;
+    }
+}
+
+/* AQUI TERMINA LO DE LA PESTAÑA DE INICIO */
+/* AQUI EMPIEZA LO DE LA PESTAÑA DE TABLA GENERAL */
+
+/* ================= TABLA JORNADAS ================= */
+.table-jornadas {
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 900px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,.4);
+}
+
+.table-jornadas th {
+    background: linear-gradient(135deg, #333, #222);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-jornadas td {
+    padding: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.table-jornadas tr:hover td {
+    filter: brightness(1.15);
+}
+
+.tabla-wrapper {
+    display: flex;
+    justify-content: center;  /* 🔥 centra horizontal */
+    width: 100%;
+}
+
+/* ================= COLUMNAS FIJAS ================= */
+.col-nombre,
+.col-suma {
+    background: #2ec4b6;
+    color: #000;
+    font-weight: bold;
+}
+
+/* ================= ESCALA DE COLORES ================= */
+.v-0  { background: #ffffff; color: #000; }
+
+.v-1  { background: #d00000; color: #fff; }
+.v-3  { background: #e85d04; color: #fff; }
+.v-5  { background: #f48c06; color: #000; }
+.v-7  { background: #faa307; color: #000; }
+.v-9  { background: #ffd166; color: #000; }
+.v-11  { background: #d9ed92; color: #000; }
+.v-13  { background: #b5e48c; color: #000; }
+.v-15 { background: #99d98c; color: #000; }
+.v-17 { background: #76c893; color: #000; }
+.v-19 { background: #52b69a; color: #fff; }
+.v-21 { background: #2ec4b6; color: #fff; }
+
+.v-2  { background: #d00000; color: #fff; }
+.v-4  { background: #e85d04; color: #fff; }
+.v-6  { background: #f48c06; color: #000; }
+.v-8  { background: #faa307; color: #000; }
+.v-10  { background: #ffd166; color: #000; }
+.v-12  { background: #d9ed92; color: #000; }
+.v-14  { background: #b5e48c; color: #000; }
+.v-16  { background: #99d98c; color: #000; }
+.v-18  { background: #76c893; color: #000; }
+.v-20 { background: #52b69a; color: #fff; }
+.v-22 { background: #2ec4b6; color: #fff; }
+
+.v-max { background: #1b9aaa; color: #fff; }
+
+.page-title {
+    text-align: center;
+    margin: 30px auto 20px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    /* Colores del sitio */
+    color: #0b3d2e;
+
+    /* Línea decorativa */
+    position: relative;
+}
+
+.page-title::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 4px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, #1abc9c, #16a34a);
+    border-radius: 2px;
+}
+
+.page-title {
+    text-align: center;
+    margin: 25px 0 15px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    color: #0b3d2e;
+}
+
+.page-title::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 4px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, #1abc9c, #16a34a);
+    border-radius: 3px;
+}
+
+.jornada-form {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.jornada-form label {
+    font-weight: 600;
+    margin-right: 8px;
+    color: #0b3d2e;
+}
+
+.jornada-form select {
+    padding: 8px 14px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #1abc9c;
+    background-color: #f0fdfa;
+    color: #0b3d2e;
+    cursor: pointer;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jornada-form select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.35);
+}
+
+.tabla-bloque {
+    margin: 25px auto;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.pred-table {
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pred-table thead th {
+    padding: 10px 14px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+
+    /* Colores del sitio */
+    background: linear-gradient(135deg, #0b3d2e, #145a32);
+    color: #ecf0f1;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.pred-table thead th:last-child {
+    border-right: none;
+}
+
+.pred-table td {
+    padding: 8px 10px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+    font-weight: 600;
+}
+
+.pred-table tbody tr:hover {
+    filter: brightness(1.05);
+}
+
+@media (max-width: 768px) {
+    .pred-table {
+        font-size: 0.85rem;
+    }
+
+    .pred-table th,
+    .pred-table td {
+        padding: 6px 8px;
+    }
+}
+
+/* AQUI TERMINA LO DE LA PESTAÑA DE INICIO */
+
+/* CONTENEDOR GENERAL */
+.quiniela-page {
+    background-color: #b4b4b4;
+    padding: 20px;
+}
+
+/* TÍTULOS DE SECCIÓN */
+.section-title {
+    text-align: center;
+    background-color: #c8c8c8;
+    color: #111;
+    font-size: 24px;
+    padding: 10px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
+}
+
+/* FORMULARIO */
+.nombre-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nombre-form select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #888;
+}
+
+/* LAYOUT PRINCIPAL */
+.quiniela-layout {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* IMAGEN */
+.quiniela-imagen {
+    flex: 1;
+    text-align: center;
+}
+
+.quiniela-imagen img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* LATERAL (VACÍO POR AHORA) */
+.quiniela-lateral {
+    flex: 1;
+    min-height: 200px;
+}
+
+/* CONSEJO */
+.quiniela-consejo {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+    background-color: #d6d6d6;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* RESPONSIVE (CELULAR) */
+@media (max-width: 768px) {
+    .quiniela-layout {
+        flex-direction: column;
+    }
+
+    .quiniela-consejo {
+        font-size: 22px;
+    }
+}
+
+.quiniela-right{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quiniela-form{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.partido {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    background: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    font-weight: 600;
+
+    max-width: 800px;   /* 🔥 limita el ancho */
+    margin: 20px auto;  /* 🔥 lo centra horizontalmente */
+}
+.partido {
+    width: 90%;
+    max-width: 850px;
+    margin: 5px auto;
+}
+
+
+.opcion{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.opcion img{
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.opcion input{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Local a la izquierda */
+.opcion.local{
+    justify-content: flex-start;
+}
+
+/* Visitante a la derecha */
+.opcion.visitante{
+    justify-content: flex-end;
+}
+
+/* Empate centrado */
+.opcion.empate{
+    justify-content: center;
+    font-weight: bold;
+    color: #0a5c2d;
+}
+
+/* Botón */
+.btn-guardar{
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg,#0a5c2d,#1f9b4f);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-guardar:hover{
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.partido-linea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #d3d3d3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.partido-linea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #d3d3d3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+/* 🔥 ancho fijo marcador */
+.marcador {
+    width: 40px;
+    text-align: center;
+}
+
+/* 🔥 tamaño fijo logos */
+.logo {
+    width: 28px;
+    height: 20px;
+    object-fit: cover;
+}
+
+/* 🔥 ancho fijo para nombres */
+.equipo {
+    width: 90px;          /* ajusta si quieres */
+    text-align: center;
+}
+
+/* 🔥 ancho fijo para VS */
+.vs {
+    width: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.seleccion-equipo {
+    margin: 25px 0;
+    padding: 15px;
+    background: #f2f2f2;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.label-equipo {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #222;
+    font-size: 15px;
+}
+
+.select-equipo {
+    width: 80%;
+    max-width: 300px;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    background: white;
+    cursor: pointer;
+}
+
+.select-equipo:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 4px rgba(30,136,229,0.5);
+}
+
+.registro-equipo {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f2f2f2;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.label-equipo {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #222;
+}
+
+.select-equipo {
+    width: 80%;
+    max-width: 320px;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    background: white;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.select-equipo:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 4px rgba(30,136,229,0.5);
+}
+
+.jugadores-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-jugador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    width: 100%;
+    margin-bottom: 12px;
+
+    font-weight: 600;
+    font-size: 15px;
+    color: #222;
+}
+
+.input-jugador {
+    width: 80%;
+    max-width: 320px;
+    margin: 0 auto 10px auto;
+    padding: 9px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+}
+
+.input-jugador:focus {
+    outline: none;
+    border-color: #43a047;
+    box-shadow: 0 0 4px rgba(67,160,71,0.5);
+}
+
+.momios-box {
+    background: #f4f4f4;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 520px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.momios-title {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.momio-opcion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.momio-label {
+    font-weight: 600;
+    min-width: 140px;
+}
+
+.radio-btn {
+    position: relative;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.radio-btn input {
+    display: none;
+}
+
+/* Seleccionado */
+.radio-btn input:checked + span,
+.radio-btn input:checked {
+    background: #1e7f3f;
+    border-color: #1e7f3f;
+    color: white;
+}
+
+.radio-btn:hover {
+    border-color: #1e7f3f;
+}
+
+/* Para que el label cambie al hacer check */
+.radio-btn:has(input:checked) {
+    background: #1e7f3f;
+    color: white;
+    border-color: #1e7f3f;
+}
+
+.bracket {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* antes 45px */
+    padding: 20px 10px;
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+/* columnas más compactas */
+.side {
+    display: flex;
+    gap: 8px; /* antes 15px */
+}
+
+/* 🔥 reducimos ancho mínimo */
+.round {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 85px; /* antes 110px */
+}
+
+/* títulos más pequeños */
+.round h4 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+/* ============================= */
+/* ESPACIADO PROGRESIVO ENTRE RONDAS */
+/* ============================= */
+
+/* 8vos */
+#izq-8 .match,
+#der-8 .match {
+    margin: 35px 0; /* más separación vertical */
+}
+
+/* Cuartos */
+#izq-4 .match,
+#der-4 .match {
+    margin:80px 0;
+}
+
+/* Semifinal */
+#izq-2 .match,
+#der-2 .match {
+    margin: 130px 0;
+}
+
+/* 🔥 cajas más pequeñas */
+.match {
+    background: #ffffff;
+    padding: 4px; /* antes 6px */
+    margin: 4px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 🔥 selects más compactos */
+.match select {
+    width: 100%;
+    font-size: 11px; /* antes 14px */
+    padding: 2px;
+}
+
+/* centro más pequeño */
+.center-final {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 110px; /* antes 150px */
+    color: white;
+    align-self: flex-start;
+    margin-top: 8px; /* ajusta este valor */
+}
+
+.center-final h3 {
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+.champion-box {
+    background: gold;
+}
+
+/* botón más pequeño */
+.submit-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-container button {
+    padding: 8px 18px;
+    font-size: 13px;
+    background: #00c851;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.submit-container button:hover {
+    background: #007e33;
+}
+
+.predicciones-bracket{
+display:flex;
+justify-content:center;
+gap:80px;
+margin-top:40px;
+}
+
+.lado{
+display:flex;
+gap:25px;
+align-items:center;
+}
+
+.col{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.mid{
+margin-top:40px;
+}
+
+.mid2{
+margin-top:80px;
+}
+
+.mid3{
+margin-top:120px;
+}
+
+.centro{
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:40px;
+}
+
+.box{
+border:2px solid #000000;
+padding:8px 14px;
+background:#eaeaea;
+min-width:50px;
+text-align:center;
+font-weight:bold;
+}
+
+.final{
+background:#f1c40f;
+}
+
+.verde{
+    background: #2ecc71;
+    color: white;
+}
+
+.rojo{
+    background: #e74c3c;
+    color: white;
+}
+
+.gris{
+    background: #bdc3c7;
+}
+
+.col-title{
+
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:10px;
+    padding:6px 10px;
+
+    background:linear-gradient(145deg,#1b5e20,#2e7d32);
+    color:white;
+
+    border-radius:6px;
+    font-size:14px;
+    letter-spacing:1px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.final-title{
+
+    background:linear-gradient(145deg,#ff9800,#ff5722);
+    font-size:16px;
+}
+
+.box:hover{
+
+    transform:scale(1.05);
+}
+
+/* ============================= */
+/* 📱 TABLET (max 1024px) */
+/* ============================= */
+
+@media (max-width: 1024px) {
+
+    .bracket {
+        gap: 25px;
+        padding: 20px 10px;
+    }
+
+    .round {
+        min-width: 95px;
+    }
+
+    .round h4 {
+        font-size: 12px;
+    }
+
+    .center-final {
+        min-width: 120px;
+    }
+
+}
+
+/* ============================= */
+/* 📱 MÓVIL (max 768px) */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .bracket {
+        flex-direction: column; /* 🔥 cambia a vertical */
+        align-items: center;
+        gap: 30px;
+    }
+
+    .side {
+        flex-direction: column; /* columnas se apilan */
+        align-items: center;
+    }
+
+    .round {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .center-final {
+        order: -1; /* 🔥 pone la final arriba */
+    }
+
+    .match:hover {
+        transform: none; /* quita zoom en móvil */
+    }
+
+}
+
+/* ============================= */
+/* 📱 MÓVIL PEQUEÑO (max 480px) */
+/* ============================= */
+
+@media (max-width: 480px) {
+
+    .round {
+        max-width: 250px;
+    }
+
+    .submit-container button {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="es">
+
+
+    
+<head>
+<meta charset="UTF-8">
+
+<title>Quiniela Pitera</title>
+<!-- Styles -->
+</head>
+<body>
+<div id = "Header">
+    <h1>Quiniela Pitera</h1>
+</div>
+<div class="menu">
+    <a href="{% url 'principal' %}"
+       class="{% if request.resolver_match.url_name == 'principal' %}active{% endif %}">
+       Inicio
+    </a>
+
+    <a href="{% url 'jornadas' %}"
+       class="{% if request.resolver_match.url_name == 'jornadas' %}active{% endif %}">
+       Jornadas
+    </a>
+
+    <a href="{% url 'ingresar_resultado' %}"
+       class="{% if request.resolver_match.url_name == 'ingresar_resultado' %}active{% endif %}">
+       Llenar Quiniela
+    </a>
+
+    <a href="{% url 'tabla_general' %}"
+       class="{% if request.resolver_match.url_name == 'tabla_general' %}active{% endif %}">
+       Tabla General
+    </a>
+</div>
+
+
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer class="footer">
+    <p>© 2026 Quiniela Pitera · Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
+

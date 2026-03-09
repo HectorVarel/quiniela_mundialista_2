@@ -1,0 +1,2018 @@
+{% extends "principal/base.html" %}
+
+{% block content %}
+<div class="quiniela-page">
+
+    <h2 class="section-title">1. Selecciona tu nombre</h2>
+
+    <form id="miFormulario" action="{% url 'ingresar_resultado' %}" method="post" class="nombre-form">
+        {% csrf_token %}
+        <label for="cartas">Nombre:</label>
+        <select id="cartas" name="cartas" onchange="this.form.submit()">
+            {% for valor in cartas %}
+                <option value="{{ valor.nombre }} {{ valor.carta }}"
+                    {% if valor.nombre == carta_seleccionada %} selected {% endif %}>
+                    {{ valor.nombre }} ({{ valor.carta }})
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <h2 class="section-title">2. Llena tu quiniela</h2>
+
+     <!-- IZQUIERDA -->
+        
+
+    <div class="quiniela-layout">
+
+       
+
+        <!-- DERECHA -->
+        <div class="quiniela-lateral">
+        {% for d in diccio_equipos %}
+        {% for f in fotos_equipos %}
+        {% if carta_quiniela == "NC" or carta_quiniela == "CM"%}
+        <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+        {% csrf_token %}
+
+        <!-- PARTIDO 1 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido1" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j1 }}">
+                {{ d.eq1_j1 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido1" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j1 }}
+                <img src="data:image/png;base64,{{ f.eq2_j1 }}">
+                <input type="radio" name="partido1" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 2 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido2" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j2 }}">
+                {{ d.eq1_j2 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido2" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j2 }}
+                <img src="data:image/png;base64,{{ f.eq2_j2 }}">
+                <input type="radio" name="partido2" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 3 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido3" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j3 }}">
+                {{ d.eq1_j3 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido3" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j3 }}
+                <img src="data:image/png;base64,{{ f.eq2_j3 }}">
+                <input type="radio" name="partido3" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 4 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido4" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j4 }}">
+                {{ d.eq1_j4 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido4" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j4 }}
+                <img src="data:image/png;base64,{{ f.eq2_j4 }}">
+                <input type="radio" name="partido4" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 5 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido5" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j5 }}">
+                {{ d.eq1_j5 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido5" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j5 }}
+                <img src="data:image/png;base64,{{ f.eq2_j5 }}">
+                <input type="radio" name="partido5" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 6 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido6" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j6 }}">
+                {{ d.eq1_j6 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido6" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j6 }}
+                <img src="data:image/png;base64,{{ f.eq2_j6 }}">
+                <input type="radio" name="partido6" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 7 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido7" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j7 }}">
+                {{ d.eq1_j7 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido7" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j7 }}
+                <img src="data:image/png;base64,{{ f.eq2_j7 }}">
+                <input type="radio" name="partido7" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 8 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido8" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j8 }}">
+                {{ d.eq1_j8 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido8" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j8 }}
+                <img src="data:image/png;base64,{{ f.eq2_j8 }}">
+                <input type="radio" name="partido8" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 9 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido9" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j9 }}">
+                {{ d.eq1_j9 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido9" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j9 }}
+                <img src="data:image/png;base64,{{ f.eq2_j9 }}">
+                <input type="radio" name="partido9" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 10 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido10" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j10 }}">
+                {{ d.eq1_j10 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido10" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j10 }}
+                <img src="data:image/png;base64,{{ f.eq2_j10 }}">
+                <input type="radio" name="partido10" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 11 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido11" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j11 }}">
+                {{ d.eq1_j11 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido11" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j11 }}
+                <img src="data:image/png;base64,{{ f.eq2_j11 }}">
+                <input type="radio" name="partido11" value="V">
+            </label>
+        </div>
+
+
+        <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+        <button type="submit" class="btn-guardar">
+            💾 Guardar Predicciones
+        </button>
+
+        </form>
+        {% endif %}
+
+        {% if carta_quiniela == "OD" or carta_quiniela == "OT" %}
+
+
+        <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+        {% csrf_token %}
+
+            <!-- PARTIDO 1 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido1LCH' name="partido1CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j1 }}">
+                    {{ d.eq1_j1 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido1ECH' name="partido1CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j1 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j1 }}">
+                    <input type="checkbox" id='partido1VCH' name="partido1CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 2 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido2LCH' name="partido2CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j2 }}">
+                    {{ d.eq1_j2 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido2ECH' name="partido2CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j2 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j2 }}">
+                    <input type="checkbox" id='partido2VCH' name="partido2CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 3 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido3LCH' name="partido3CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j3 }}">
+                    {{ d.eq1_j3 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido3ECH' name="partido3CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j3 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j3 }}">
+                    <input type="checkbox" id='partido3VCH' name="partido3CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 4 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido4LCH' name="partido4CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j4 }}">
+                    {{ d.eq1_j4 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido4ECH' name="partido4CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j4 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j4 }}">
+                    <input type="checkbox" id='partido4VCH' name="partido4CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 5 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido5LCH' name="partido5CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j5 }}">
+                    {{ d.eq1_j5 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido5ECH' name="partido5CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j5 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j5 }}">
+                    <input type="checkbox" id='partido5VCH' name="partido5CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 6 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido6LCH' name="partido6CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j6 }}">
+                    {{ d.eq1_j6 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido6ECH' name="partido6CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j6 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j6 }}">
+                    <input type="checkbox" id='partido6VCH' name="partido6CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 7 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido7LCH' name="partido7CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j7 }}">
+                    {{ d.eq1_j7 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido7ECH' name="partido7CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j7 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j7 }}">
+                    <input type="checkbox" id='partido7VCH' name="partido7CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 8 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido8LCH' name="partido8CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j8 }}">
+                    {{ d.eq1_j8 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido8ECH' name="partido8CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j8 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j8 }}">
+                    <input type="checkbox" id='partido8VCH' name="partido8CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 9 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido9LCH' name="partido9CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j9 }}">
+                    {{ d.eq1_j9 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido9ECH' name="partido9CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j9 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j9 }}">
+                    <input type="checkbox" id='partido9VCH' name="partido9CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 10 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido10LCH' name="partido10CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j10 }}">
+                    {{ d.eq1_j10 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido10ECH' name="partido10CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j10 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j10 }}">
+                    <input type="checkbox" id='partido10VCH' name="partido10CH" value="V">
+                </label>
+            </div>
+
+            <!-- PARTIDO 11 -->
+            <div class="partido">
+                <label class="opcion local">
+                    <input type="checkbox" id='partido11LCH' name="partido11CH" value="L">
+                    <img src="data:image/png;base64,{{ f.eq1_j11 }}">
+                    {{ d.eq1_j11 }}
+                </label>
+
+                <label class="opcion empate">
+                    <input type="checkbox" id='partido11ECH' name="partido11CH" value="E"> Empate
+                </label>
+
+                <label class="opcion visitante">
+                    {{ d.eq2_j11 }}
+                    <img src="data:image/png;base64,{{ f.eq2_j11 }}">
+                    <input type="checkbox" id='partido11VCH' name="partido11CH" value="V">
+                </label>
+            </div>
+        
+        <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+        <button type="submit" class="btn-guardar">
+            💾 Guardar Predicciones
+        </button>
+
+        </form>
+        {% endif %}
+
+        {% if carta_quiniela == "MA" %}
+            <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+            {% csrf_token %}
+
+            <!-- PARTIDO 1 -->
+            <div class="partido-linea">
+                <input type="text" name="partido1LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j1 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j1 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j1 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j1 }}" class="logo">
+                <input type="text" name="partido1VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 2 -->
+            <div class="partido-linea">
+                <input type="text" name="partido2LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j2 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j2 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j2 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j2 }}" class="logo">
+                <input type="text" name="partido2VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 3 -->
+            <div class="partido-linea">
+                <input type="text" name="partido3LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j3 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j3 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j3 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j3 }}" class="logo">
+                <input type="text" name="partido3VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 4 -->
+            <div class="partido-linea">
+                <input type="text" name="partido4LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j4 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j4 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j4 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j4 }}" class="logo">
+                <input type="text" name="partido4VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 5 -->
+            <div class="partido-linea">
+                <input type="text" name="partido5LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j5 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j5 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j5 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j5 }}" class="logo">
+                <input type="text" name="partido5VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 6 -->
+            <div class="partido-linea">
+                <input type="text" name="partido6LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j6 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j6 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j6 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j6 }}" class="logo">
+                <input type="text" name="partido6VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 7 -->
+            <div class="partido-linea">
+                <input type="text" name="partido7LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j7 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j7 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j7 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j7 }}" class="logo">
+                <input type="text" name="partido7VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 8 -->
+            <div class="partido-linea">
+                <input type="text" name="partido8LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j8 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j8 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j8 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j8 }}" class="logo">
+                <input type="text" name="partido8VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 9 -->
+            <div class="partido-linea">
+                <input type="text" name="partido9LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j9 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j9 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j9 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j9 }}" class="logo">
+                <input type="text" name="partido9VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 10 -->
+            <div class="partido-linea">
+                <input type="text" name="partido10LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j10 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j10 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j10 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j10 }}" class="logo">
+                <input type="text" name="partido10VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 11 -->
+            <div class="partido-linea">
+                <input type="text" name="partido11LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j11 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j11 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j11 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j11 }}" class="logo">
+                <input type="text" name="partido11VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 12 -->
+            <div class="partido-linea">
+                <input type="text" name="partido12LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j12 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j12 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j12 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j12 }}" class="logo">
+                <input type="text" name="partido12VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 13 -->
+            <div class="partido-linea">
+                <input type="text" name="partido13LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j13 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j13 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j13 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j13 }}" class="logo">
+                <input type="text" name="partido13VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 14 -->
+            <div class="partido-linea">
+                <input type="text" name="partido14LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j14 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j14 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j14 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j14 }}" class="logo">
+                <input type="text" name="partido14VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 15 -->
+            <div class="partido-linea">
+                <input type="text" name="partido15LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j15 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j15 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j15 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j15 }}" class="logo">
+                <input type="text" name="partido15VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 16 -->
+            <div class="partido-linea">
+                <input type="text" name="partido16LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j16 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j16 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j16 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j16 }}" class="logo">
+                <input type="text" name="partido16VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 17 -->
+            <div class="partido-linea">
+                <input type="text" name="partido17LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j17 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j17 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j17 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j17 }}" class="logo">
+                <input type="text" name="partido17VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 18 -->
+            <div class="partido-linea">
+                <input type="text" name="partido18LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j18 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j18 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j18 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j18 }}" class="logo">
+                <input type="text" name="partido18VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 19 -->
+            <div class="partido-linea">
+                <input type="text" name="partido19LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j19 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j19 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j19 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j19 }}" class="logo">
+                <input type="text" name="partido19VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 20 -->
+            <div class="partido-linea">
+                <input type="text" name="partido20LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j20 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j20 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j20 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j20 }}" class="logo">
+                <input type="text" name="partido20VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 21 -->
+            <div class="partido-linea">
+                <input type="text" name="partido21LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j21 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j21 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j21 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j21 }}" class="logo">
+                <input type="text" name="partido21VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 22 -->
+            <div class="partido-linea">
+                <input type="text" name="partido22LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_22 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j22 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j22 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_22 }}" class="logo">
+                <input type="text" name="partido22VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 23 -->
+            <div class="partido-linea">
+                <input type="text" name="partido23LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j23 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j23 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j23 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j23 }}" class="logo">
+                <input type="text" name="partido23VMA" maxlength="2" class="marcador">
+            </div>
+
+            <!-- PARTIDO 24 -->
+            <div class="partido-linea">
+                <input type="text" name="partido24LMA" maxlength="2" class="marcador">
+                <img src="data:image/png;base64,{{ f.eq1_j24 }}" class="logo">
+                <span class="equipo">{{ d.eq1_j24 }}</span>
+                <span class="vs">vs</span>
+                <span class="equipo">{{ d.eq2_j24 }}</span>
+                <img src="data:image/png;base64,{{ f.eq2_j24 }}" class="logo">
+                <input type="text" name="partido24VMA" maxlength="2" class="marcador">
+            </div>
+
+            <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+            <button type="submit" class="btn-guardar">💾 Guardar Predicciones</button>
+
+            </form>
+            {% endif %}
+
+        {% if carta_quiniela == "M" %}
+        <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+        {% csrf_token %}
+
+        <!-- PARTIDO 1 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido1M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j1 }}">
+                {{ d.eq1_j1 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido1M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j1 }}
+                <img src="data:image/png;base64,{{ f.eq2_j1 }}">
+                <input type="radio" name="partido1M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 2 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido2M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j2 }}">
+                {{ d.eq1_j2 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido2M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j2 }}
+                <img src="data:image/png;base64,{{ f.eq2_j2 }}">
+                <input type="radio" name="partido2M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 3 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido3M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j3 }}">
+                {{ d.eq1_j3 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido3M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j3 }}
+                <img src="data:image/png;base64,{{ f.eq2_j3 }}">
+                <input type="radio" name="partido3M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 4 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido4M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j4 }}">
+                {{ d.eq1_j4 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido4M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j4 }}
+                <img src="data:image/png;base64,{{ f.eq2_j4 }}">
+                <input type="radio" name="partido4M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 5 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido5M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j5 }}">
+                {{ d.eq1_j5 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido5M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j5 }}
+                <img src="data:image/png;base64,{{ f.eq2_j5 }}">
+                <input type="radio" name="partido5M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 6 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido6M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j6 }}">
+                {{ d.eq1_j6 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido6M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j6 }}
+                <img src="data:image/png;base64,{{ f.eq2_j6 }}">
+                <input type="radio" name="partido6M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 7 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido7M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j7 }}">
+                {{ d.eq1_j7 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido7M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j7 }}
+                <img src="data:image/png;base64,{{ f.eq2_j7 }}">
+                <input type="radio" name="partido7M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 8 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido8M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j8 }}">
+                {{ d.eq1_j8 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido8M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j8 }}
+                <img src="data:image/png;base64,{{ f.eq2_j8 }}">
+                <input type="radio" name="partido8M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 9 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido9M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j9 }}">
+                {{ d.eq1_j9 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido9M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j9 }}
+                <img src="data:image/png;base64,{{ f.eq2_j9 }}">
+                <input type="radio" name="partido9M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 10 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido10M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j10 }}">
+                {{ d.eq1_j10 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido10M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j10 }}
+                <img src="data:image/png;base64,{{ f.eq2_j10 }}">
+                <input type="radio" name="partido10M" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 11 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido11M" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j11 }}">
+                {{ d.eq1_j11 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido11M" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j11 }}
+                <img src="data:image/png;base64,{{ f.eq2_j11 }}">
+                <input type="radio" name="partido11M" value="V">
+            </label>
+        </div>
+
+        <div class="seleccion-equipo">
+            <label for="eq_selM" class="label-equipo">
+                ⭐ Selecciona un equipo
+            </label>
+
+            <select id="eq_selM" name="equipo_seleccionadoM" class="select-equipo">
+                {% for valor in equipos_multi %}
+                    <option value="{{ valor.equipo }}">{{ valor.equipo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+        <button type="submit" class="btn-guardar">
+            💾 Guardar Predicciones
+        </button>
+
+        </form>
+        {% endif %}
+
+        {% if carta_quiniela == "J" %}
+        <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+        {% csrf_token %}
+
+        <!-- PARTIDO 1 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido1J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j1 }}">
+                {{ d.eq1_j1 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido1J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j1 }}
+                <img src="data:image/png;base64,{{ f.eq2_j1 }}">
+                <input type="radio" name="partido1J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 2 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido2J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j2 }}">
+                {{ d.eq1_j2 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido2J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j2 }}
+                <img src="data:image/png;base64,{{ f.eq2_j2 }}">
+                <input type="radio" name="partido2J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 3 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido3J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j3 }}">
+                {{ d.eq1_j3 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido3J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j3 }}
+                <img src="data:image/png;base64,{{ f.eq2_j3 }}">
+                <input type="radio" name="partido3J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 4 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido4J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j4 }}">
+                {{ d.eq1_j4 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido4J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j4 }}
+                <img src="data:image/png;base64,{{ f.eq2_j4 }}">
+                <input type="radio" name="partido4J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 5 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido5J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j5 }}">
+                {{ d.eq1_j5 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido5J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j5 }}
+                <img src="data:image/png;base64,{{ f.eq2_j5 }}">
+                <input type="radio" name="partido5J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 6 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido6J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j6 }}">
+                {{ d.eq1_j6 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido6J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j6 }}
+                <img src="data:image/png;base64,{{ f.eq2_j6 }}">
+                <input type="radio" name="partido6J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 7 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido7J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j7 }}">
+                {{ d.eq1_j7 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido7J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j7 }}
+                <img src="data:image/png;base64,{{ f.eq2_j7 }}">
+                <input type="radio" name="partido7J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 8 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido8J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j8 }}">
+                {{ d.eq1_j8 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido8J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j8 }}
+                <img src="data:image/png;base64,{{ f.eq2_j8 }}">
+                <input type="radio" name="partido8J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 9 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido9J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j9 }}">
+                {{ d.eq1_j9 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido9J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j9 }}
+                <img src="data:image/png;base64,{{ f.eq2_j9 }}">
+                <input type="radio" name="partido9J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 10 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido10J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j10 }}">
+                {{ d.eq1_j10 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido10J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j10 }}
+                <img src="data:image/png;base64,{{ f.eq2_j10 }}">
+                <input type="radio" name="partido10J" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 11 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido11J" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j11 }}">
+                {{ d.eq1_j11 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido11J" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j11 }}
+                <img src="data:image/png;base64,{{ f.eq2_j11 }}">
+                <input type="radio" name="partido11J" value="V">
+            </label>
+        </div>
+
+        <div class="registro-equipo">
+
+            <label class="label-equipo">⭐ Selecciona un equipo</label>
+            <select id="eq_sel" name="equipo_seleccionado" class="select-equipo">
+                {% for valor in equipos_disponibles %}
+                    <option value="{{ valor.equipo }}">{{ valor.equipo }}</option>
+                {% endfor %}
+            </select>
+
+            <div class="jugadores-box">
+                <label class="label-jugador">👤 Jugador 1</label>
+                <input type="text" name="jug" class="input-jugador" placeholder="Nombre del jugador 1">
+
+                <label class="label-jugador">👤 Jugador 2</label>
+                <input type="text" name="jug2" class="input-jugador" placeholder="Nombre del jugador 2">
+            </div>
+
+        </div>
+
+
+        <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+        <button type="submit" class="btn-guardar">
+            💾 Guardar Predicciones
+        </button>
+
+        </form>
+        {% endif %}
+
+        {% if carta_quiniela == "T" %}
+        <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+        {% csrf_token %}
+
+        <!-- PARTIDO 1 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido1T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j1 }}">
+                {{ d.eq1_j1 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido1T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j1 }}
+                <img src="data:image/png;base64,{{ f.eq2_j1 }}">
+                <input type="radio" name="partido1T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 2 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido2T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j2 }}">
+                {{ d.eq1_j2 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido2T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j2 }}
+                <img src="data:image/png;base64,{{ f.eq2_j2 }}">
+                <input type="radio" name="partido2T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 3 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido3T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j3 }}">
+                {{ d.eq1_j3 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido3T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j3 }}
+                <img src="data:image/png;base64,{{ f.eq2_j3 }}">
+                <input type="radio" name="partido3T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 4 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido4T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j4 }}">
+                {{ d.eq1_j4 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido4T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j4 }}
+                <img src="data:image/png;base64,{{ f.eq2_j4 }}">
+                <input type="radio" name="partido4T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 5 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido5T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j5 }}">
+                {{ d.eq1_j5 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido5T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j5 }}
+                <img src="data:image/png;base64,{{ f.eq2_j5 }}">
+                <input type="radio" name="partido5T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 6 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido6T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j6 }}">
+                {{ d.eq1_j6 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido6T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j6 }}
+                <img src="data:image/png;base64,{{ f.eq2_j6 }}">
+                <input type="radio" name="partido6T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 7 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido7T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j7 }}">
+                {{ d.eq1_j7 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido7T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j7 }}
+                <img src="data:image/png;base64,{{ f.eq2_j7 }}">
+                <input type="radio" name="partido7T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 8 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido8T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j8 }}">
+                {{ d.eq1_j8 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido8T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j8 }}
+                <img src="data:image/png;base64,{{ f.eq2_j8 }}">
+                <input type="radio" name="partido8T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 9 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido9T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j9 }}">
+                {{ d.eq1_j9 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido9T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j9 }}
+                <img src="data:image/png;base64,{{ f.eq2_j9 }}">
+                <input type="radio" name="partido9T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 10 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido10T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j10 }}">
+                {{ d.eq1_j10 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido10T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j10 }}
+                <img src="data:image/png;base64,{{ f.eq2_j10 }}">
+                <input type="radio" name="partido10T" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 11 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido11T" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j11 }}">
+                {{ d.eq1_j11 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido11T" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j11 }}
+                <img src="data:image/png;base64,{{ f.eq2_j11 }}">
+                <input type="radio" name="partido11T" value="V">
+            </label>
+        </div>
+
+        <div class="registro-equipo">
+
+            <label class="label-equipo">⭐ Selecciona un equipo</label>
+            <select id="eq_sel" name="equipo_seleccionado" class="select-equipo">
+                {% for valor in equipos_disponibles %}
+                    <option value="{{ valor.equipo }}">{{ valor.equipo }}</option>
+                {% endfor %}
+            </select>
+
+            <label class="label-equipo"> Escribe el minuto en el que inicia y en el que termina tu rango (solo escribe en numero)</label>
+
+            <div class="jugadores-box">
+                <label class="label-jugador">Inicio:</label>
+                <input type="text" name="tiempo_gol_inicio" class="input-jugador" placeholder="Minuto inicial">
+
+                <label class="label-jugador">Final</label>
+                <input type="text" name="tiempo_gol_final" class="input-jugador" placeholder="Minuto final">
+            </div>
+
+        </div>
+
+        <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+        <button type="submit" class="btn-guardar">
+            💾 Guardar Predicciones
+        </button>
+
+        </form>
+        {% endif %}
+
+        {% if carta_quiniela == "E" %}
+        <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+        {% csrf_token %}
+
+        <!-- PARTIDO 1 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido1E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j1 }}">
+                {{ d.eq1_j1 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido1E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j1 }}
+                <img src="data:image/png;base64,{{ f.eq2_j1 }}">
+                <input type="radio" name="partido1E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 2 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido2E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j2 }}">
+                {{ d.eq1_j2 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido2E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j2 }}
+                <img src="data:image/png;base64,{{ f.eq2_j2 }}">
+                <input type="radio" name="partido2E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 3 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido3E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j3 }}">
+                {{ d.eq1_j3 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido3E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j3 }}
+                <img src="data:image/png;base64,{{ f.eq2_j3 }}">
+                <input type="radio" name="partido3E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 4 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido4E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j4 }}">
+                {{ d.eq1_j4 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido4E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j4 }}
+                <img src="data:image/png;base64,{{ f.eq2_j4 }}">
+                <input type="radio" name="partido4E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 5 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido5E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j5 }}">
+                {{ d.eq1_j5 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido5E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j5 }}
+                <img src="data:image/png;base64,{{ f.eq2_j5 }}">
+                <input type="radio" name="partido5E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 6 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido6E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j6 }}">
+                {{ d.eq1_j6 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido6E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j6 }}
+                <img src="data:image/png;base64,{{ f.eq2_j6 }}">
+                <input type="radio" name="partido6E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 7 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido7E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j7 }}">
+                {{ d.eq1_j7 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido7E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j7 }}
+                <img src="data:image/png;base64,{{ f.eq2_j7 }}">
+                <input type="radio" name="partido7E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 8 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido8E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j8 }}">
+                {{ d.eq1_j8 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido8E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j8 }}
+                <img src="data:image/png;base64,{{ f.eq2_j8 }}">
+                <input type="radio" name="partido8E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 9 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido9E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j9 }}">
+                {{ d.eq1_j9 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido9E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j9 }}
+                <img src="data:image/png;base64,{{ f.eq2_j9 }}">
+                <input type="radio" name="partido9E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 10 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido10E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j10 }}">
+                {{ d.eq1_j10 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido10E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j10 }}
+                <img src="data:image/png;base64,{{ f.eq2_j10 }}">
+                <input type="radio" name="partido10E" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 11 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido11E" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j11 }}">
+                {{ d.eq1_j11 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido11E" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j11 }}
+                <img src="data:image/png;base64,{{ f.eq2_j11 }}">
+                <input type="radio" name="partido11E" value="V">
+            </label>
+        </div>
+
+        <div class="registro-equipo">
+
+            <label class="label-equipo">⭐ Selecciona un equipo</label>
+            <select id="eq_sel" name="equipo_seleccionado" class="select-equipo">
+                {% for valor in equipos_disponibles %}
+                    <option value="{{ valor.equipo }}">{{ valor.equipo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="momios-box">
+
+            <label class="momios-title">⚽ Este equipo va a tener:</label>
+
+            <div class="momio-opcion">
+                <span class="momio-label">Goles</span>
+
+                <label class="radio-btn">
+                    <input type="radio" name="OE1" value="-">
+                    Menos de {{ momios.0.mom1 }}
+                </label>
+
+                <label class="radio-btn">
+                    <input type="radio" name="OE1" value="+">
+                    Más de {{ momios.0.mom1 }}
+                </label>
+            </div>
+
+            <div class="momio-opcion">
+                <span class="momio-label">Tarjetas</span>
+
+                <label class="radio-btn">
+                    <input type="radio" name="OE2" value="-">
+                    Menos de {{ momios.0.mom2 }}
+                </label>
+
+                <label class="radio-btn">
+                    <input type="radio" name="OE2" value="+">
+                    Más de {{ momios.0.mom2 }}
+                </label>
+            </div>
+
+            <div class="momio-opcion">
+                <span class="momio-label">Tiros de esquina</span>
+
+                <label class="radio-btn">
+                    <input type="radio" name="OE3" value="-">
+                    Menos de {{ momios.0.mom3 }}
+                </label>
+
+                <label class="radio-btn">
+                    <input type="radio" name="OE3" value="+">
+                    Más de {{ momios.0.mom3 }}
+                </label>
+            </div>
+
+        </div>
+
+
+        <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+        <button type="submit" class="btn-guardar">
+            💾 Guardar Predicciones
+        </button>
+
+        </form>
+        {% endif %}
+        {% if carta_quiniela == "PI" %}
+        <form action="{% url 'ingresar_resultado' %}" method="post" class="quiniela-form">
+        {% csrf_token %}
+
+        <!-- PARTIDO 1 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido1PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j1 }}">
+                {{ d.eq1_j1 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido1PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j1 }}
+                <img src="data:image/png;base64,{{ f.eq2_j1 }}">
+                <input type="radio" name="partido1PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 2 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido2PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j2 }}">
+                {{ d.eq1_j2 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido2PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j2 }}
+                <img src="data:image/png;base64,{{ f.eq2_j2 }}">
+                <input type="radio" name="partido2PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 3 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido3PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j3 }}">
+                {{ d.eq1_j3 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido3PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j3 }}
+                <img src="data:image/png;base64,{{ f.eq2_j3 }}">
+                <input type="radio" name="partido3PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 4 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido4PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j4 }}">
+                {{ d.eq1_j4 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido4PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j4 }}
+                <img src="data:image/png;base64,{{ f.eq2_j4 }}">
+                <input type="radio" name="partido4PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 5 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido5PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j5 }}">
+                {{ d.eq1_j5 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido5PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j5 }}
+                <img src="data:image/png;base64,{{ f.eq2_j5 }}">
+                <input type="radio" name="partido5PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 6 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido6PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j6 }}">
+                {{ d.eq1_j6 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido6PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j6 }}
+                <img src="data:image/png;base64,{{ f.eq2_j6 }}">
+                <input type="radio" name="partido6PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 7 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido7PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j7 }}">
+                {{ d.eq1_j7 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido7PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j7 }}
+                <img src="data:image/png;base64,{{ f.eq2_j7 }}">
+                <input type="radio" name="partido7PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 8 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido8PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j8 }}">
+                {{ d.eq1_j8 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido8PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j8 }}
+                <img src="data:image/png;base64,{{ f.eq2_j8 }}">
+                <input type="radio" name="partido8PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 9 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido9PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j9 }}">
+                {{ d.eq1_j9 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido9PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j9 }}
+                <img src="data:image/png;base64,{{ f.eq2_j9 }}">
+                <input type="radio" name="partido9PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 10 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido10PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j10 }}">
+                {{ d.eq1_j10 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido10PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j10 }}
+                <img src="data:image/png;base64,{{ f.eq2_j10 }}">
+                <input type="radio" name="partido10PI" value="V">
+            </label>
+        </div>
+
+        <!-- PARTIDO 11 -->
+        <div class="partido">
+            <label class="opcion local">
+                <input type="radio" name="partido11PI" value="L">
+                <img src="data:image/png;base64,{{ f.eq1_j11 }}">
+                {{ d.eq1_j11 }}
+            </label>
+
+            <label class="opcion empate">
+                <input type="radio" name="partido11PI" value="E"> Empate
+            </label>
+
+            <label class="opcion visitante">
+                {{ d.eq2_j11 }}
+                <img src="data:image/png;base64,{{ f.eq2_j11 }}">
+                <input type="radio" name="partido11PI" value="V">
+            </label>
+        </div>
+
+        <div class="seleccion-equipo">
+            <label for="eq_selPI" class="label-equipo">
+                ⭐ Selecciona un partido
+            </label>
+
+            <select id="eq_selPI" name="equipo_seleccionadoPI" class="select-equipo">
+                {% for i in "12" %}
+                    <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+
+        <div class="seleccion-equipo">
+            <label for="eq_selPI2" class="label-equipo">
+                ⭐ Selecciona los puntos que quieres apostar
+            </label>
+
+            <select id="eq_selPI2" name="equipo_seleccionadoPI2" class="select-equipo">
+                {% for i in "12345" %}
+                    <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+
+
+        <input type="hidden" name="nombre_j" value="{{ carta_seleccionada }}">
+
+        <button type="submit" class="btn-guardar">
+            💾 Guardar Predicciones
+        </button>
+
+        </form>
+        {% endif %}
+
+        {% endfor %}
+        {% endfor %}
+
+        </div>
+    </div>
+
+    
+<div class="quiniela-consejo">
+            {{ consejo }}
+        </div>
+</div>
+{% endblock %}
+
+
