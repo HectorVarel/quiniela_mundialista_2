@@ -34,7 +34,7 @@ equipos = ["mexico", "sudafrica", "corea", "m1", "m2", "m3", "m4", "m5", "m6",
            "arabia_saudita", "uruguay", "francia", "senegal", "noruega", 
            "argentina", "argelia", "austria", "jordania", "portugal",
            "uzbekistan", "colombia", "inglaterra", "croacia", "ghana", "panama"]
-equipos = ["inglaterra"]
+equipos = ["irak", "congo", "republica_checa", "boznia", "suecia", "turquia"]
 for e in equipos:
     # Ruta de la imagen a convertir
     image_path = f"C:/Users/varel/Pictures/escudos_equipos/w2560/{e}.png"

@@ -39,6 +39,8 @@ def quitar_mayusculas_y_acentos(palabra):
         palabra_sin_acentos = "nueva_zelanda"
     elif palabra == 'Arabia Saudita':
         palabra_sin_acentos = "arabia_saudita"
+    elif palabra == "República checa":
+        palabra_sin_acentos = "republica_checa"
     else:
         # Convertir la palabra a minúsculas
         palabra = palabra.lower()

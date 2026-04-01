@@ -256,6 +256,12 @@ class Equipos_fotos(models.Model):
     croacia = models.TextField(max_length = 1000000, default = 'NC')
     ghana = models.TextField(max_length = 1000000, default = 'NC')
     panama = models.TextField(max_length = 1000000, default = 'NC')
+    irak = models.TextField(max_length = 1000000, default = 'NC')
+    congo = models.TextField(max_length = 1000000, default = 'NC')
+    republica_checa = models.TextField(max_length = 1000000, default = 'NC')
+    suecia = models.TextField(max_length = 1000000, default = 'NC')
+    boznia = models.TextField(max_length = 1000000, default = 'NC')
+    turquia = models.TextField(max_length = 1000000, default = 'NC')
 
 
 
