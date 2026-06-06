@@ -6,7 +6,7 @@ import sqlite3
 import traceback
 # Create your views here.
 
-Jugadores = ['Felix', 'Victor', 'Manuel', 'Leo', 'Juan Luis', 'Omar', 'Hector', 'Horacio', 'Fernando', 'Bryan', 'Jorge', 'Rafa', 'Erick', 'Miguel', 'Alfonso', 'Saem', 'Brian', 'Josue', 'Angel']
+Jugadores = ['Felix', 'Victor', 'Manuel', 'Leo', 'Juan Luis', 'Omar', 'Hector', 'Horacio', 'Fernando', 'Bryan', 'Jorge', 'Rafa', 'Erick', 'Miguel', 'Alfonso', 'Saem', 'Brian', 'Josue', 'Angel', 'Diego']
 
 def sec_resultados(nj):
     jornada = f'pJ{nj}'
@@ -14,7 +14,7 @@ def sec_resultados(nj):
     # Obtener el valor de la jornada desde el modelo Prediccion
     resultado = Prediccion.objects.filter(nombre='Resultados').values_list(jornada, flat=True)
     resultado = str(resultado[0])
-    print(resultado)
+    #print(resultado)
     return resultado
 def marcador_a_secuencia(secuencia):
     elementos = secuencia.split(', ')
@@ -109,8 +109,8 @@ def get_points(prediccion_n, prediccion_s, carta, pred_j, carta_aux, jug_gol, ti
     correctos = [item.strip() for item in prediccion_s.split(',')]
     pred = [item.strip() for item in pred_j.split(',')]
     p_extra = 0
-    print(prediccion_s)
-    print(pred_j)
+    #print(prediccion_s)
+    #print(pred_j)
     # Suma de puntos para Opcion doble y Opcion triple
     if carta == 'OD' or carta == 'OT' or carta == 'IQ' or carta == 'NC' or carta == "E" or carta == "PI" or carta =="CM":
         contador = 0
@@ -130,7 +130,7 @@ def get_points(prediccion_n, prediccion_s, carta, pred_j, carta_aux, jug_gol, ti
             p_extra, sec_colores = extra_points(carta, carta_aux, jug_gol, correctos, pred, prediccion_n, pred_j, sec_colores, tiempos, nj, est_jueg, p_i)
         contador += p_extra
 
-        print(contador)
+        #print(contador)
     elif carta == 'DQ':
         q1 = [elemento[0] for elemento in pred]
         q2 = [elemento[1] for elemento in pred]
@@ -174,7 +174,7 @@ def get_points(prediccion_n, prediccion_s, carta, pred_j, carta_aux, jug_gol, ti
                 sec_colores[i] = 'lightgreen'
             q = q1
 
-        print('Doble Quiniela: ', contador, q)
+        #print('Doble Quiniela: ', contador, q)
     elif carta == 'J':
         contador = 0
         for idx, (valor1, valor2) in enumerate(zip(correctos, pred)):
@@ -189,7 +189,7 @@ def get_points(prediccion_n, prediccion_s, carta, pred_j, carta_aux, jug_gol, ti
                     sec_colores[idx] = 'lightgreen'
         p_extra, sec_colores = extra_points(carta, carta_aux, jug_gol, correctos, pred, prediccion_n, pred_j, sec_colores, tiempos, nj, est_jueg, p_i)
         contador += p_extra
-        print('Jugador: ', contador)
+        #print('Jugador: ', contador)
     elif carta == 'T':
         contador = 0
         for idx, (valor1, valor2) in enumerate(zip(correctos, pred)):
@@ -219,7 +219,7 @@ def get_points(prediccion_n, prediccion_s, carta, pred_j, carta_aux, jug_gol, ti
                     sec_colores[idx] = 'lightgreen'
         p_extra, sec_colores = extra_points(carta, carta_aux, jug_gol, correctos, pred, prediccion_n, pred_j, sec_colores, tiempos, nj, est_jueg, p_i)
         contador += p_extra
-        print(p_extra, sec_colores)
+        #print(p_extra, sec_colores)
     elif carta == 'MA':
         q_s = marcador_a_secuencia(pred_j)
         q_s = [item.strip() for item in q_s.split(',')]
@@ -236,11 +236,11 @@ def get_points(prediccion_n, prediccion_s, carta, pred_j, carta_aux, jug_gol, ti
                     sec_colores[idx] = 'lightgreen'
         p_extra, sec_colores = extra_points(carta, carta_aux, jug_gol, correctos, pred, prediccion_n, pred_j, sec_colores, tiempos,nj, est_jueg, p_i)
         contador += p_extra
-        print('Marcador: ', contador)
+        #print('Marcador: ', contador)
     else:
         contador = 0
-        print('No aplica')
-    print(correctos, pred)
+        #print('No aplica')
+    #print(correctos, pred)
     cadena_resultante = ', '.join(sec_colores)
     return contador, p_extra, cadena_resultante
 
@@ -261,22 +261,22 @@ def extra_points(carta, carta_aux, jug_gol, correctos, pred, pred_n, pred_j_n, c
     puntos = 0
 
     if carta == 'E':
-       # print("ESTADISTICA")
+       # #print("ESTADISTICA")
         for i in est_jueg:
-            print(carta_aux.split(' ')[3], i.split(' ')[3])
+            #print(carta_aux.split(' ')[3], i.split(' ')[3])
             if carta_aux.split(' ')[3] == i.split(' ')[3]:
-                print("SI")
+                #print("SI")
                 if carta_aux.split(' ')[0] == i.split(' ')[0]:
                     puntos += 1
                 if carta_aux.split(' ')[1] == i.split(' ')[1]:
                     puntos += 1
                 if carta_aux.split(' ')[2] == i.split(' ')[2]:
                     puntos += 1
-        print(puntos)
+        #print(puntos)
     elif carta == 'PI':
         aux_pi = False
         for p in range(len(p_i)):
-            print("CC: ", carta_aux.split(' - ')[0], p_i[p].split(", ")[0])
+            #print("CC: ", carta_aux.split(' - ')[0], p_i[p].split(", ")[0])
             if carta_aux.split(' - ')[0] == p_i[p].split(' - ')[0]:
                 aux_pi = True
                 puntos = int(carta_aux.split(' - ')[1])
@@ -285,8 +285,8 @@ def extra_points(carta, carta_aux, jug_gol, correctos, pred, pred_n, pred_j_n, c
     elif carta == 'J':
         p = 0
         jug = carta_aux.split(" ")
-        print(carta_aux.split(" "))
-        print(jug_gol)
+        #print(carta_aux.split(" "))
+        #print(jug_gol)
         for j in jug:
             if j in jug_gol:
                 p += 1
@@ -294,8 +294,8 @@ def extra_points(carta, carta_aux, jug_gol, correctos, pred, pred_n, pred_j_n, c
             puntos = 3
         elif p == 1:
             puntos = 2
-            print(carta_aux)
-            print('Puntos por jugador que mete gol: ', puntos)
+            #print(carta_aux)
+            #print('Puntos por jugador que mete gol: ', puntos)
     elif carta == 'T':
         if carta_aux in tiempos:
             carta_aux = carta_aux.split(":")
@@ -310,7 +310,7 @@ def extra_points(carta, carta_aux, jug_gol, correctos, pred, pred_n, pred_j_n, c
                 puntos = 5 
             else:
                 puntos = 0         
-        print('Puntos por jugador que mete gol: ', puntos)
+        #print('Puntos por jugador que mete gol: ', puntos)
     elif carta == 'M':
         #if correctos[int(carta_aux)] == pred[int(carta_aux)]:
         eq = [""]
@@ -322,37 +322,39 @@ def extra_points(carta, carta_aux, jug_gol, correctos, pred, pred_n, pred_j_n, c
             secuencia = [item.strip() for item in getattr(registro, jornada).split(',')]
         for i in range(len(secuencia)):
             eq = secuencia[i].split(" vs ")
-            print(eq[0], eq[1])
+            #print(eq[0], eq[1])
             pal1 = quitar_mayusculas_y_acentos(str(eq[0]))
             pal2 = quitar_mayusculas_y_acentos(str(eq[1]))
             if str(carta_aux) == str(pal1) or str(carta_aux) == str(pal2):
-                print("Juego: ", i+1)
-                print("Color: ", colo[i])
+                #print("Juego: ", i+1)
+                #print("Color: ", colo[i])
                 if colo[i] == "lightgreen":
                     colo[i] = "goldenrod"
                     puntos = 2
-        print("Secuencia: ", secuencia)
+        #print("Secuencia: ", secuencia)
         #datos_procesados.append({
         #    'nombre': registro.eq,
         #})
-        print("AUX: ", carta_aux)
+        #print("AUX: ", carta_aux)
         #colo[0] = 'goldenrod'
-        print('Puntos por el Multiplicador: ', puntos)
+        #print('Puntos por el Multiplicador: ', puntos)
     elif carta == 'MA':
         s1 = [item.strip() for item in pred_n.split(',')]
         s2 = [item.strip() for item in pred_j_n.split(',')]
         c = []
+        print("Secuencia N: ", s1)
+        print("Secuencia J: ", s2)
         for i in range(len(s1)):
             if s1[i] == s2[i]:
                 puntos += 1
                 c.append(i)
         for i in c:
             colo[i] = 'aquamarine'
-        print('Puntos por el Marcador: ', puntos)
+        #print('Puntos por el Marcador: ', puntos)
     else:
-        print('No hay puntos extra')
+        #print('No hay puntos extra')
         puntos = 0
-    print(puntos, colo)
+    #print(puntos, colo)
     return puntos, colo
 
 def get_pts_car(carta, nj):
@@ -385,7 +387,7 @@ def actualizar_puntos_cartas(nombre, pts, nj):
         jornada_obj = Puntos_cartas.objects.get(nombre=nombre)
         setattr(jornada_obj, jornada, pts)
         jornada_obj.save()
-        print('SI')
+        #print('SI')
 def actualizar_puntos(nombre, nj, puntos, puntos_extra):
     if nombre != 'Resultados':
         jornada = f'j{nj}'
@@ -397,7 +399,7 @@ def actualizar_puntos(nombre, nj, puntos, puntos_extra):
         print("10")
         jornada_obj.save()
         print("11")
-        print('SI')
+        #print('SI')
         # Actualizar los puntos extras en la tabla PuntosExtra
         print("12")
         puntos_extra_obj = Puntos_extra.objects.get(nombre=nombre)
@@ -443,7 +445,7 @@ def actualizar_colores(nombre, sec_colores, nj):
 def actualizar_DQ_MA(nj, carta, nombre):
     registros = Prediccion.objects.filter(nombre=nombre)
     nombre_campo = f'pJ{nj}'
-    print('Jugadores Disponibles')
+    #print('Jugadores Disponibles')
     if carta == 'DQ':
         for r in registros:
             conteo_X = getattr(r, nombre_campo).split(', ').count('X')
@@ -480,16 +482,16 @@ def actualizar_DQ_MA(nj, carta, nombre):
     """
     nombres = []
     if carta == 'DQ':
-        print(nj, carta)
+        #print(nj, carta)
         for r in registros:
             if r.nombre != 'Resultados':
                 #conteo_X = getattr(r, nombre_campo).split(', ').count('X')
                 conteo_X = getattr(r, nombre_campo).split(', ').count('XX')
-                print(conteo_X)
+                #print(conteo_X)
                 if conteo_X == 11:
 
                     objeto = get_object_or_404(Prediccion, nombre=r.nombre)
-                    print("SI")
+                    #print("SI")
                     setattr(objeto, nombre_campo, 'X, X, X, X, X, X, X, X, X, X, X')
                     objeto.save()
     """
@@ -517,17 +519,17 @@ def jornadas(request):
         tiempos = tiempos.split(', ')
         partidos_I = get_PI(jor)
         partidos_I = partidos_I.split(', ')
-        print(Resultados)
-        print(Resultados_s)
-        print(Jugadores_con_gol)
+        #print(Resultados)
+        #print(Resultados_s)
+        #print(Jugadores_con_gol)
         for n in range(len(Jugadores)):
             print('XXXX', jor, Jugadores[n])
             carta = get_card(jor, Jugadores[n])
-            print("1")
+            #print("1")
             actualizar_DQ_MA(jor, carta, Jugadores[n])
-            print("2")
+            #print("2")
             carta_auxiliar = get_card_aux(jor, Jugadores[n])
-            print("3")
+            #print("3")
             prediccion = get_predict(jor, Jugadores[n])
             #pts_cartas = get_pts_car(carta, jor)
             print("4")
@@ -536,16 +538,16 @@ def jornadas(request):
             actualizar_puntos_cartas(Jugadores[n], puntos_extra, jor)
             print("6")
             actualizar_suma_puntos_cartas(Jugadores[n])
-            print(Jugadores[n], carta, carta_auxiliar, prediccion)
-            print(Jugadores[n], carta, carta_auxiliar, prediccion)
+            #print(Jugadores[n], carta, carta_auxiliar, prediccion)
+            #print(Jugadores[n], carta, carta_auxiliar, prediccion)
             print("7")
-            print(puntos, puntos_extra, sec_colores)
+            #print(puntos, puntos_extra, sec_colores)
             actualizar_puntos(Jugadores[n], jor, puntos, puntos_extra)
             print("SI")
             actualizar_suma_puntos(Jugadores[n])
             actualizar_colores(Jugadores[n], sec_colores, jor)
-            print(puntos, puntos_extra)
-            print("*"*50)
+            #print(puntos, puntos_extra)
+            #print("*"*50)
             
         ####################################################
 
@@ -563,7 +565,7 @@ def jornadas(request):
         reg_extra = list(Puntos_extra.objects.all())
         reg_c = list(Colores.objects.all())
 
-        print("REGISTROS: ", registros)
+        #print("REGISTROS: ", registros)
 
         def crear_diccionario_puntos(registro_puntos, jor):
             puntos_por_nombre = {}
@@ -588,7 +590,7 @@ def jornadas(request):
         
         registros = ordenar_nombres(registros, reg_puntos, jor)
 
-        print("R1")
+        #print("R1")
 
         # =========================
         # ORDEN PERSONALIZADO
@@ -598,9 +600,9 @@ def jornadas(request):
                 return (0,)
             return (1, registro.nombre)
         
-        print("REGISTROS: ", registros)
+        #print("REGISTROS: ", registros)
         #registros = sorted(registros, key=orden_personalizado)
-        print("REGISTROS: ", registros)
+        #print("REGISTROS: ", registros)
         # =========================
         # MATCH POR NOMBRE
         # =========================
@@ -618,7 +620,7 @@ def jornadas(request):
         reg_ep = match_por_nombre(registros, reg_extra)
         reg_colores = match_por_nombre(registros, reg_c)
 
-        print("R2")
+        #print("R2")
 
         # =========================
         # CAMPOS DINÁMICOS
@@ -638,7 +640,7 @@ def jornadas(request):
                     "puntos_extra": valor
                 })
 
-        print("R3")
+        #print("R3")
 
         # =========================
         # COLUMNAS
@@ -662,34 +664,34 @@ def jornadas(request):
         base_seq = getattr(registros2[0], nombre_campo2).split(",")
         total_filas = len(base_seq)
 
-        print("R4")
-        print(f"TF: {total_filas}")
-        print(f"r2: {registros2}")
-        print(f"r: {registros}")
+        #print("R4")
+        #print(f"TF: {total_filas}")
+        #print(f"r2: {registros2}")
+        #print(f"r: {registros}")
 
 
         try:
             for i in range(total_filas):
-                print(f"\nITERACIÓN i = {i}")
+                #print(f"\nITERACIÓN i = {i}")
                 fila = []
 
                 # Equipos
                 for eq in registros2:
                     seq = getattr(eq, nombre_campo2).split(",")
-                    print(f"Equipos -> len(seq): {len(seq)}")
+                    #print(f"Equipos -> len(seq): {len(seq)}")
 
                     fila.append([seq[i].strip(), "lightgreen"])
 
                 # Jugadores
                 for idx, r in enumerate(registros):
                     seq = getattr(r, nombre_campo).split(",")
-                    print(f"Jugadores -> len(seq): {len(seq)}")
+                    #print(f"Jugadores -> len(seq): {len(seq)}")
 
                     if idx == 0:
                         color = "thistle"
                     elif idx - 1 < len(reg_colores):
                         col_seq = getattr(reg_colores[idx - 1], nombre_campo2).split(",")
-                        print(f"Colores -> len(col_seq): {len(col_seq)}")
+                        #print(f"Colores -> len(col_seq): {len(col_seq)}")
                         color = col_seq[i]
                     else:
                         color = "white"
@@ -699,14 +701,14 @@ def jornadas(request):
                 sec_pred.append({"pred": fila})
 
         except Exception as e:
-            print("Error:", e)
+            #print("Error:", e)
             traceback.print_exc()
 
 
         # =========================
         # FILAS EXTRA
         # =========================
-        print("R5")
+        #print("R5")
         def fila_extra(registros_extra):
             fila = []
 
@@ -743,7 +745,7 @@ def jornadas(request):
 
         bloques = []
 
-        print("R6")
+        #print("R6")
 
         for i in range(0, len(jugadores), BLOQUE):
             bloque_cols = fijas + jugadores[i:i + BLOQUE]
@@ -769,10 +771,10 @@ def jornadas(request):
         # RENDER
         # =========================
 
-        print("*******************+")
-        print(bloques)
-        print(jor)
-        print(lis_exp)
+        #print("*******************+")
+        #print(bloques)
+        #print(jor)
+        #print(lis_exp)
 
         return render(
             request,
@@ -786,8 +788,8 @@ def jornadas(request):
         )
 
     else:
-        print("Resultado:")
-        print(sec_resultados(jor).split(", "))
+        #print("Resultado:")
+        #print(sec_resultados(jor).split(", "))
         jugadores_fase_final = []
         prediccion_jugadores = []
 
@@ -818,9 +820,9 @@ def jornadas(request):
         if prediccion_actual:
             puntos, colores = comparar_predicciones(prediccion_actual, resultados_correctos)
             jornada_obj = Jornadas.objects.get(nombre=jugador_seleccionado)
-            print("9")
+            #print("9")
             setattr(jornada_obj, "j4", puntos)
-            print("10")
+            #print("10")
             jornada_obj.save()
             actualizar_suma_puntos(jugador_seleccionado)
         return render(
